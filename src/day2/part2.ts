@@ -7,29 +7,26 @@ function run() {
 
   startTimer();
 
+  const isSillySequence = (num:string, seqLen:number):boolean => {
+    const strLen = num.length;
+
+    for (let i = 0; i < strLen; i++)
+    {
+      if (num[i] !== num[i % seqLen])
+      {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   const isSilly = (num:string):boolean => {
 
     for (let seqLen = 1; seqLen <= num.length / 2; seqLen++)
     {
-      if (num.length / seqLen != Math.floor(num.length / seqLen)) {
-        continue;
-      }
-
-      let seq = num.substring(0, seqLen);
-      let offset = seqLen;
-      let allOk = true;
-
-      while (offset < num.length) {
-
-        if (num.substring(offset, offset + seqLen) != seq) {
-          allOk = false;
-          break;
-        }
-
-        offset += seqLen;
-      }
-
-      if (allOk) {
+      if(!(num.length % seqLen) && isSillySequence(num, seqLen))
+      {
         return true;
       }
     }
