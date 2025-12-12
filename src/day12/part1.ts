@@ -89,7 +89,7 @@ function run() {
 
     let squareSize = (tree.cols - (tree.cols % 3)) * (tree.rows - (tree.rows % 3));
 
-    if (presentSize < squareSize) {
+    if (presentSize <= squareSize) {
       numFits++;
     } else {
       numUnknown++;
